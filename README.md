@@ -24,12 +24,12 @@ Acquiring API Docs: https://www.tinkoff.ru/kassa/dev/payments/
 ## Installation
 Use **go mod** as usual or install the package with **dep**:
 ```bash
-dep ensure -add github.com/nikita-vanyasin/tinkoff
+dep ensure -add github.com/rentifly/tinkoff
 ```
 
 ## Usage
 
-Automatically generated documentation can be found [here](https://pkg.go.dev/github.com/nikita-vanyasin/tinkoff).
+Automatically generated documentation can be found [here](https://pkg.go.dev/github.com/rentifly/tinkoff).
 
 Some examples of usage can be found in `*_test.go` files.
 
