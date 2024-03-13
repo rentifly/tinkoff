@@ -22,7 +22,6 @@ func NewClient(terminalKey, password string) *Client {
 	return &Client{
 		terminalKey: terminalKey,
 		password:    password,
-		baseURL:     "https://securepay.tinkoff.ru/v2",
 	}
 }
 
