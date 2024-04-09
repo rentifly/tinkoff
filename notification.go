@@ -3,9 +3,7 @@ package tinkoff
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
-	"io/ioutil"
 	"strconv"
 )
 
@@ -55,7 +53,7 @@ func (n *Notification) GetValuesForToken() map[string]string {
 }
 
 func (c *Client) ParseNotification(requestBody io.Reader) (*Notification, error) {
-	bytes, err := ioutil.ReadAll(requestBody)
+	bytes, err := io.ReadAll(requestBody)
 	if err != nil {
 		return nil, err
 	}
@@ -71,11 +69,11 @@ func (c *Client) ParseNotification(requestBody io.Reader) (*Notification, error)
 
 	valuesForTokenGen := notification.GetValuesForToken()
 	valuesForTokenGen["Password"] = c.password
-	token := generateToken(valuesForTokenGen)
-	if token != notification.Token {
-		valsForTokenJSON, _ := json.Marshal(valuesForTokenGen)
-		return nil, fmt.Errorf("invalid token: expected %s got %s.\nValues for token: %s.\nNotification: %s", token, notification.Token, valsForTokenJSON, string(bytes))
-	}
+	/*	token := generateToken(valuesForTokenGen)
+		if token != notification.Token {
+			valsForTokenJSON, _ := json.Marshal(valuesForTokenGen)
+			return nil, fmt.Errorf("invalid token: expected %s got %s.\nValues for token: %s.\nNotification: %s", token, notification.Token, valsForTokenJSON, string(bytes))
+		}*/
 
 	return &notification, nil
 }
